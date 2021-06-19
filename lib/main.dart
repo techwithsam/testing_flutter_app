@@ -1,21 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:testing_flutter_app/models/favorites_model.dart';
+import 'package:testing_flutter_app/screens/favorites.dart';
+import 'package:testing_flutter_app/screens/home.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(TestingApp());
 }
 
-class MyApp extends StatelessWidget {
-  
+class TestingApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        
-        primarySwatch: Colors.blue
+    return ChangeNotifierProvider<Favorites>(
+      create: (context) => Favorites(),
+      child: MaterialApp(
+        title: 'Testing Sample',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+        ),
+        routes: {
+          HomePage.routeName: (context) => HomePage(),
+          FavoritesPage.routeName: (context) => FavoritesPage(),
+        },
+        initialRoute: HomePage.routeName,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
-
