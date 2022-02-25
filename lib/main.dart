@@ -23,6 +23,7 @@ class TestingApp extends StatelessWidget {
           HomePage.routeName: (context) => HomePage(),
           FavoritesPage.routeName: (context) => FavoritesPage(),
         },
+        debugShowCheckedModeBanner: false,
         initialRoute: HomePage.routeName,
       ),
     );

@@ -10,6 +10,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: 0,
         title: Text('Testing Sample'),
         actions: <Widget>[
           TextButton.icon(
@@ -34,15 +35,12 @@ class HomePage extends StatelessWidget {
 
 class ItemTile extends StatelessWidget {
   final int itemNo;
-
-  const ItemTile(
-    this.itemNo,
-  );
+  const ItemTile(this.itemNo);
 
   @override
   Widget build(BuildContext context) {
     var favoritesList = Provider.of<Favorites>(context);
-
+    int val = itemNo + 1;
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: ListTile(
@@ -50,13 +48,13 @@ class ItemTile extends StatelessWidget {
           backgroundColor: Colors.primaries[itemNo % Colors.primaries.length],
         ),
         title: Text(
-          'Item $itemNo',
+          'Item $val',
           key: Key('text_$itemNo'),
         ),
         trailing: IconButton(
           key: Key('icon_$itemNo'),
           icon: favoritesList.items.contains(itemNo)
-              ? Icon(Icons.favorite)
+              ? Icon(Icons.favorite, color: Colors.red)
               : Icon(Icons.favorite_border),
           onPressed: () {
             !favoritesList.items.contains(itemNo)

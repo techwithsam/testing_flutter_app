@@ -9,6 +9,7 @@ class FavoritesPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: 0,
         title: Text('Favorites'),
       ),
       body: Consumer<Favorites>(
@@ -25,9 +26,7 @@ class FavoritesPage extends StatelessWidget {
 class FavoriteItemTile extends StatelessWidget {
   final int itemNo;
 
-  const FavoriteItemTile(
-    this.itemNo,
-  );
+  const FavoriteItemTile(this.itemNo);
 
   @override
   Widget build(BuildContext context) {
